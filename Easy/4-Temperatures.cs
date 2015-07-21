@@ -15,28 +15,36 @@ class Solution
     {
         int N = int.Parse(Console.ReadLine()); // the number of temperatures to analyse
         string TEMPS = Console.ReadLine(); // the N temperatures expressed as integers ranging from -273 to 5526
-        
-        if (N == 0){
+
+        if (N == 0)
+        {
             // Retorna 0 se nenhuma temperatura for informada
             Console.WriteLine("0");
         }
-        else {
-            
+        else
+        {
+
             // Converte TEMPS em um array de int
-            int[] newTemps = Array.ConvertAll(TEMPS.Split(' '),i => Convert.ToInt32(i));
+            int[] newTemps = Array.ConvertAll(TEMPS.Split(' '), i => Convert.ToInt32(i));
 
             // Primeira temperatura para comparação
             int closerTemp = newTemps[0];
-            
-            for(int i = 1; i < newTemps.Length; i++){
+
+            for (int i = 1; i < newTemps.Length; i++)
+            {
                 // Multiplicando numeros negativos resulta em numero positivo
                 // Isso simplifica a comparação para apenas o lado positivo
-                if(newTemps[i]*newTemps[i] <= closerTemp*closerTemp){
-                    closerTemp = newTemps[i];     
+                if (newTemps[i] * newTemps[i] <= closerTemp * closerTemp)
+                {
+                    // Prioriza o numero positivo em caso de ambos serem proximos de 0
+                    if ((newTemps[i] > 0) || (newTemps[i] != closerTemp * -1))
+                    {
+                        closerTemp = newTemps[i];
+                    }                    
                 }
             }
             // Retorna resultado
-            Console.WriteLine(closerTemp);    
+            Console.WriteLine(closerTemp);
         }
         // Write an action using Console.WriteLine()
     }

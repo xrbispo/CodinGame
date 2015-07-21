@@ -1,3 +1,2 @@
-CodingGame Puzzles (p)
-(www.codingame.com)
+#CodingGame Puzzles (www.codingame.com)
 Soluções em C#
